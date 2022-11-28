@@ -1,0 +1,11 @@
+Processes:
+  - ProcessId: '1'
+  - ProcessName: Process 1
+  - Description: my process
+  - Actions: 'scripts of tasks, query, parallel node and goto objects to be processed'
+  - CurrentStage: current stage in the process of the actions script
+  - Status: 'True'
+  - StatusMessage: Status message
+  - SuppressAlert: 'If ON do not disturb , if OFF then show status'
+  - ProcessInitiator: UserId of person or machine that set this process into action
+

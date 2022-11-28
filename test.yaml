@@ -1,0 +1,37 @@
+changeWorkflowName:
+  description: this is a sample workflow
+  type: direct
+  tags:
+    - sample workflow
+  input:
+    - var1 : ''
+  output:
+    keyword: <% $.timeNow %>
+  tasks:
+    task1:
+      action: task.cs
+      input:
+        script: |
+           public string TaskFunction(string message)
+           {
+            return message;
+           }
+           return TaskFunction();
+      publish:
+        timeNow: <% task().result %>
+      on-success:
+        - task2
+  task2:
+      action: app.cs
+      input:
+        script: |
+          public string myFunction()
+          {
+          var a = DateTime.Now;
+          var b = 1000;
+          var c = a - b;
+          return String(c);
+          }
+          return myFunction();
+      publish:
+        timeNow: <% task().result %>
