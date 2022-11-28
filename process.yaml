@@ -4,7 +4,7 @@ ProcessManager:
   Description: !!str "Sends all necessary documents to users"
   Actions : 
     tasks:
-      task1:
+      task1: &task
         taskID: !!int 1
         taskName: !!str "First task"
         taskOwner: !!str "Emmanuel Imion"
@@ -18,3 +18,21 @@ ProcessManager:
         taskDuration: "1hr"
         on-success:
           -task2
+      task2:
+        taskID: !!int 1
+        taskName: !!str "First task"
+        taskOwner: !!str "Emmanuel Imion"
+        displayOwner: !!str "Owned by Emmanuel"
+        status: ["ACTIVE","PASSIVE"]
+        type: ["RECOMMENDATION","APPROVAL","Task"]
+        successMessage: "Show success or failure"
+        associatedData: "link to relevant dataset through Data API"
+        taskNote: |
+          "notes made by the owner of th task"
+        taskDuration: "1hr"
+        on-success:
+          -task2  
+    query:
+    goto:
+      <<: *task
+
