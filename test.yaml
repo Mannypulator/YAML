@@ -1,4 +1,5 @@
 changeWorkflowName:
+  name: "Workflow 1"
   description: this is a sample workflow
   type: direct
   tags:
